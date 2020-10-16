@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Post(models.Model):
     author = models.ForeignKey(User)
     text = models.TextField()
@@ -11,4 +12,4 @@ class Post(models.Model):
         ordering = ['created']
 
     def __unicode__(self):
-        return self.text+' - '+self.author.username
+        return self.text + ' - ' + self.author.username
