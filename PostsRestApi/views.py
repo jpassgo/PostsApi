@@ -6,35 +6,25 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def home(request):
-    author = request.GET.get('author')
-    print(author)
-    text = request.GET.get('text')
-    print(text)
     return HttpResponse(
-        json.dumps({author: text}),
+        'Home',
         content_type="application/json"
     )
 
 
 @csrf_exempt
 def create_post(request):
-    author = request.GET.get('author')
-    print(author)
-    text = request.GET.get('text')
-    print(text)
+    print(request.body)
+    body = json.loads(request.body)
     return HttpResponse(
-        json.dumps({author: text}),
+        json.dumps({body['author']: body['text']}),
         content_type="application/json"
     )
 
 
 @csrf_exempt
 def delete_post(request):
-    author = request.GET.get('author')
-    print(author)
-    text = request.GET.get('text')
-    print(text)
     return HttpResponse(
-        json.dumps({author: text}),
+        'delete',
         content_type="application/json"
     )
